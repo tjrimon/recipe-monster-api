@@ -1,12 +1,18 @@
 document.getElementById('search-btn').addEventListener('click', function () {
     const inputField = document.getElementById('search-box')
     const mealName = inputField.value
-    inputField.textContent = ''
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayFood(data.meals))
+    const error = document.getElementById('input-error')
+    if (inputField.value != '') {
+        const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displayFood(data.meals))
+        error.innerText = ''
+    } else {
+        error.innerText = 'Please insert food name . ex: fish fry, chicken etc'
+    }
 
+    inputField.value = ''
 })
 
 const displayFood = meals => {
