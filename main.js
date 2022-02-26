@@ -9,7 +9,7 @@ document.getElementById('search-btn').addEventListener('click', function () {
             .then(data => displayFood(data.meals))
         error.innerText = ''
     } else {
-        error.innerText = 'Please insert food name . ex: fish fry, chicken etc'
+        error.innerText = 'Please insert food name . ex: fish pie, chicken etc.'
     }
 
     inputField.value = ''
